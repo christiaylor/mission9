@@ -1,10 +1,7 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import "./App.css";
-import data from "../src/CollegeBasketballTeams.json";
+import data from "../src/CollegeBasketballTeams.json"; // Bring in the data
 
-// Assuming each team in the data has these properties
+// Each team in the data has these properties
 interface TeamProps {
   school: string;
   name: string;
@@ -12,10 +9,12 @@ interface TeamProps {
   state: string;
 }
 
+// Description of page
 function HeadingSection() {
   return <h1>March Madness Information</h1>;
 }
 
+// Each individual team. This will be the html replicated for the whole list.
 function Team({ school, name, city, state }: TeamProps) {
   return (
     <>
@@ -27,18 +26,19 @@ function Team({ school, name, city, state }: TeamProps) {
   );
 }
 
+// Put the teams together
 function TeamList() {
   const teams = data.teams || [];
-
   return (
     <>
       {teams.map((singleTeam) => {
-        return <Team {...singleTeam} />;
+        return <Team {...singleTeam} />; // singleTeam doesn't actually need to be defined since it's assumed to be one of the list.
       })}
     </>
   );
 }
 
+// Main function. Display everything.
 function App() {
   return (
     <>
